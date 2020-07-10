@@ -1,0 +1,22 @@
+{
+	"identifier": "info.reckoner.pa.mod-server",
+	"display_name": "Reckoner for PA (Server)",
+	"description": "Team Game Rating System for PA",
+	"author": "Dissonant",
+	"signature": "not yet implemented",
+	"forum": "",
+	"priority": 100,
+	"icon": "https://i.imgur.com/gv7fM54.png",
+	"titansOnly": false,
+	"category": [
+	],
+	"scenes": {
+		"new_game": [
+            "coui://ui/mods/info.reckoner.pa.mod-server/new_game.js"
+        ]
+	},
+	"context": "server",
+	"date": "2020-07-10",
+	"build": "114618",
+	"version": "0.0.1"
+}
