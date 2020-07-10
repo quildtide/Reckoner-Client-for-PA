@@ -23,8 +23,11 @@ function display_reckoner() {
     }
 
     function refresh_ratings() {
-        for (army in model.armies()) {
-            for (slot in army.slots()) {
+        var i;
+        var j;
+        for (i = 0; i < model.armies().length; i++) {
+            for (j = 0; j < model.armies()[i].slots().length; j++) {
+                var slot = model.armies()[i].slots()[j];
                 if (slot.isPlayer() && !(slot.ai())) {
                     $.get(BASIC_RATING_3 + slot.playerId()).then(
                             _.bind(please_work, {pid: slot.playerId()}));
