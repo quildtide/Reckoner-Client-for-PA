@@ -40,16 +40,6 @@ function display_reckoner() {
     }
 
     setInterval(refresh_ratings, 15000)
-
-    // $('div.slot-player-text.truncate').after(
-    //     '<!-- ko with: model.displayRank_data()[slot.playerId()] -->\
-    //     <span data-bind="visible: $root.display1v1LadderRanks_show">\
-    //     <div class="slot-player-text" style="margin-left: 10px" data-placement="right" data-bind="tooltip: tooltip">\
-    //     <img data-bind="attr: { src : MatchmakingUtility.getSmallBadgeURL( league ) }, style: { opacity: opacity }"/> \
-    //     <span data-bind="text: rank"></span>\
-    //     </div>\
-    //     </span> \
-    //     <!-- /ko -->');
     
     $('div.slot-player-text.truncate').after(
         '<!-- ko with: model.reckoner_ratings()[slot.playerId()] -->\
