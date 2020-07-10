@@ -1,13 +1,10 @@
 var loaded_reckoner;
 
-
-
-
 function display_reckoner() {
     const RECKONER_URL_3 = "http://pa.reckoner.info/";
 
     const BASIC_RATING_3 = RECKONER_URL_3 + "basic_rating/";
-    
+
     if (loaded_reckoner) {
         return;
     }
