@@ -1,12 +1,10 @@
 var loaded_reckoner;
 
-var RECKONER_URL_3 = "http://pa.reckoner.info/";
-
-var BASIC_RATING_3 = RECKONER_URL_3 + "basic_rating/";
-
-
-
 function display_reckoner() {
+    const RECKONER_URL_3 = "http://pa.reckoner.info/";
+
+    const BASIC_RATING_3 = RECKONER_URL_3 + "basic_rating/";
+
     if (loaded_reckoner) {
         return;
     }
@@ -18,8 +16,10 @@ function display_reckoner() {
     model.reckoner_ratings = ko.observable( {} );
 
     function please_work(ready) {
-        ratings[this.pid] = {rating: ready}
+        model.reckoner_ratings()[this.pid] = {rating: ready}
         console.log(this.pid)
+        
+        model.reckoner_ratings.valueHasMutated();
     }
 
     function refresh_ratings() {
@@ -34,17 +34,18 @@ function display_reckoner() {
                 }
             }
         }
-
-        model.reckoner_ratings(ratings);
-        model.reckoner_ratings.valueHasMutated();
     }
 
-    setInterval(refresh_ratings, 15000)
-    
     $('div.slot-player-text.truncate').after(
         '<!-- ko with: model.reckoner_ratings()[slot.playerId()] -->\
         (<span data-bind="text: rating"></span>)\
         <!-- /ko -->');
+
+    setTimeout(refresh_ratings, 2000);
+
+    setInterval(refresh_ratings, 15000)
+    
+    
 
 }
 
