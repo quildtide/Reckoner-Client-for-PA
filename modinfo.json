@@ -7,8 +7,14 @@
 	"forum": "https://forums.planetaryannihilation.com/threads/client-server-reckoner-ratings.73489/",
 	"priority": 100,
 	"icon": "https://i.imgur.com/gv7fM54.png",
-	"titansOnly": false,
+    "titansOnly": false,
+    "classicOnly": false,
 	"category": [
+        "classic",
+        "titans",
+        "lobby",
+        "ui",
+        "rating"
 	],
 	"scenes": {
 		"new_game": [
