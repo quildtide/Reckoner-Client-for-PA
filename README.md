@@ -18,6 +18,7 @@ It is available in both server and client mod flavors.
 ## Upcoming Features (supported already by backend; currently missing from frontend)
 - Display ratings based off of context (1v1, 5v5, 10-player FFA, 3v3v3, 3v7, etc)
 - Display estimated win chances for each team
+- Display ratings for AIs
 
 
 ## The Reckoner Rating System
