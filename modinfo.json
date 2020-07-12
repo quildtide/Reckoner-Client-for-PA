@@ -1,5 +1,5 @@
 {
-	"identifier": "info.reckoner.pa.mod-client",
+	"identifier": "info.reckoner.pa.mod-server",
 	"display_name": "Reckoner for PA (Client)",
 	"description": "Team Game Rating System for PA. Very WIP. Server version.",
 	"author": "Dissonant",
