@@ -1,13 +1,7 @@
 {
-<<<<<<< HEAD
 	"identifier": "info.reckoner.pa.mod-client",
 	"display_name": "Reckoner for PA (Client)",
 	"description": "Team Game Rating System for PA. Very WIP. Client version. Uses SuperStats as a dependency.",
-=======
-	"identifier": "info.reckoner.pa.mod-server-test",
-	"display_name": "Reckoner for PA (Server)",
-	"description": "Team Game Rating System for PA. Very WIP. Server version.",
->>>>>>> server-test
 	"author": "Dissonant",
 	"signature": "not yet implemented",
 	"forum": "https://forums.planetaryannihilation.com/threads/client-server-reckoner-ratings.73489/",
