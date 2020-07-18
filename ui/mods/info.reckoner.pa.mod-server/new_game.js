@@ -22,6 +22,15 @@ function display_reckoner() {
         model.reckoner_ratings.valueHasMutated();
     }
 
+    // function pid_controller(ready) {
+    //     if (isNaN(this.pid)) {
+    //         api.net.ubernet('/GameClient/UserId?' + $.param({ TitleDisplayName: this.pid }), 'GET', 'text')
+    //             .then(_.bind(please_work, {pid: this.pid}));
+    //     } else {
+    //         _.bind(please_work, {pid: this.pid});
+    //     }
+    // }
+
     function refresh_ratings() {
         var i;
         var j;
@@ -29,8 +38,19 @@ function display_reckoner() {
             for (j = 0; j < model.armies()[i].slots().length; j++) {
                 var slot = model.armies()[i].slots()[j];
                 if (slot.isPlayer() && !(slot.ai())) {
-                    $.get(BASIC_RATING + slot.playerId()).then(
-                            _.bind(please_work, {pid: slot.playerId()}));
+                    var pid = slot.playerId()
+                    if (isNaN(pid)) {
+                        api.net.ubernet('/GameClient/UserId?' + $.param({TitleDisplayName: pid }), 'GET', 'text')
+                            .then(function (res) {
+                                $.get(BASIC_RATING + JSON.parse(res).UberId)
+                                    .then(_.bind(please_work, {pid: pid}))
+                            });
+                    } else {
+                        $.get(BASIC_RATING + pid).then(
+                            _.bind(please_work, {pid: pid}));
+                    }
+
+                    
                 }
             }
         }
@@ -44,7 +64,7 @@ function display_reckoner() {
     // function delayed_refresh_ratings() {
     //     setTimeout(refresh_ratings, 2000);
     // }
-    
+
     model.isFFAGame.subscribe(refresh_ratings);
     model.numberOfEmptySlots.subscribe(refresh_ratings);
     model.playerCount.subscribe(refresh_ratings);
