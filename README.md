@@ -1,19 +1,19 @@
 # Reckoner Client for Planetary Annihilation
 
+**Version 0.0.2**
+
 This is a rating system for Planetary Annihilation aimed towards team games; very WIP.
 
 It is available in both server and client mod flavors.
 
 ## Current Features
-- Displays a confidence interval on each non-AI player's 5v5 rating in Reckoner on the normal servers.
+- Displays a confidence interval on each non-AI player's 5v5 Reckoner rating.
 
-- Does not currently work on the Community Dedicated Servers, local servers, or other dedicated servers. (fix planned for near future)
+## "Bugs" that will likely never be addressed
+- Will fail to identify a player on a local/dedicated server if they change their name without restarting their client
 
 ## Current Known Frontend Bugs
-- Needs better method of getting handling when `slot.playerId()` is not an uberid.
-- Occasionally freaks out for players that have never been observed before.
-- Inefficient update algorithm refreshes every 15 seconds instead of on `model.armies()` mutation.
-- Ratings may take up to 15 seconds to show for players who have just joined the lobby.
+- Doesn't show anything for players that have not been observed before
 
 ## Upcoming Features (supported already by backend; currently missing from frontend)
 - Display ratings based off of context (1v1, 5v5, 10-player FFA, 3v3v3, 3v7, etc)
