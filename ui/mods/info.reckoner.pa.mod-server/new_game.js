@@ -11,8 +11,6 @@ function display_reckoner() {
 
     loaded_reckoner = true;
 
-    var ratings = {};
-
     model.reckoner_ratings = ko.observable( {} );
 
     function please_work(ready) {
