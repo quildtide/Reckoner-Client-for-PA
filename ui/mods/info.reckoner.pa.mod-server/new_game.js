@@ -41,12 +41,13 @@ function display_reckoner() {
         (<span data-bind="text: rating"></span>)\
         <!-- /ko -->');
 
-    setTimeout(refresh_ratings, 2000);
-
-    setInterval(refresh_ratings, 15000)
+    // function delayed_refresh_ratings() {
+    //     setTimeout(refresh_ratings, 2000);
+    // }
     
-    
-
+    model.isFFAGame.subscribe(refresh_ratings);
+    model.numberOfEmptySlots.subscribe(refresh_ratings);
+    model.playerCount.subscribe(refresh_ratings);
 }
 
 display_reckoner()
