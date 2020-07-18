@@ -54,12 +54,12 @@ function display_reckoner() {
         (<span data-bind="text: rating"></span>)\
         <!-- /ko -->');
 
-    // function delayed_refresh_ratings() {
-    //     setTimeout(refresh_ratings, 2000);
-    // }
+    function delayed_refresh_ratings() {
+        setTimeout(refresh_ratings, 500);
+    }
 
     model.isFFAGame.subscribe(refresh_ratings);
-    model.numberOfEmptySlots.subscribe(refresh_ratings);
+    model.numberOfEmptySlots.subscribe(delayed_refresh_ratings);
     model.playerCount.subscribe(refresh_ratings);
 }
 
