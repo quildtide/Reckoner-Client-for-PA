@@ -1,9 +1,9 @@
 var loaded_reckoner;
 
 function display_reckoner() {
-    const RECKONER_URL_3 = "http://pa.reckoner.info/";
+    const RECKONER_URL = "http://pa.reckoner.info/";
 
-    const BASIC_RATING_3 = RECKONER_URL_3 + "basic_rating/";
+    const BASIC_RATING = RECKONER_URL + "basic_rating/";
 
     if (loaded_reckoner) {
         return;
@@ -29,7 +29,7 @@ function display_reckoner() {
             for (j = 0; j < model.armies()[i].slots().length; j++) {
                 var slot = model.armies()[i].slots()[j];
                 if (slot.isPlayer() && !(slot.ai())) {
-                    $.get(BASIC_RATING_3 + slot.playerId()).then(
+                    $.get(BASIC_RATING + slot.playerId()).then(
                             _.bind(please_work, {pid: slot.playerId()}));
                 }
             }
