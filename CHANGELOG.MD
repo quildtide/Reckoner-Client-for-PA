@@ -8,3 +8,8 @@ Fixed an async issue causing player ratings to be duplicated and assigned to the
 
 ## 0.0.2
 Added support for local/dedicated server lobbies.
+
+Ratings now refresh in a more responsive manner.
+
+## 0.0.1
+It's the first version, innit?
