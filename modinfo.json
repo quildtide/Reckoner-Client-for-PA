@@ -1,14 +1,20 @@
 {
-	"identifier": "info.reckoner.pa.mod-server",
+	"identifier": "info.reckoner.pa.mod-server-test",
 	"display_name": "Reckoner for PA (Server)",
-	"description": "Team Game Rating System for PA",
+	"description": "Team Game Rating System for PA. Very WIP. Server version.",
 	"author": "Dissonant",
 	"signature": "not yet implemented",
-	"forum": "",
+	"forum": "https://forums.planetaryannihilation.com/threads/client-server-reckoner-ratings.73489/",
 	"priority": 100,
 	"icon": "https://i.imgur.com/gv7fM54.png",
-	"titansOnly": false,
+    "titansOnly": false,
+    "classicOnly": false,
 	"category": [
+        "classic",
+        "titans",
+        "lobby",
+        "ui",
+        "rating"
 	],
 	"scenes": {
 		"new_game": [
@@ -16,7 +22,7 @@
         ]
 	},
 	"context": "server",
-	"date": "2020-07-10",
+	"date": "2020-07-18",
 	"build": "114618",
-	"version": "0.0.1"
+    "version": "0.0.4"
 }
