@@ -1,7 +1,7 @@
 {
 	"identifier": "info.reckoner.pa.mod-client",
 	"display_name": "Reckoner for PA (Client)",
-	"description": "Team Game Rating System for PA. Very WIP. Client version. Uses SuperStats as a dependency.",
+	"description": "Team Game Rating System for PA displayed for all players in a lobby. Very WIP. Client version. Uses SuperStats as a dependency.",
 	"author": "Dissonant",
 	"signature": "not yet implemented",
 	"forum": "https://forums.planetaryannihilation.com/threads/client-server-reckoner-ratings.73489/",
@@ -24,5 +24,6 @@
 	"context": "client",
 	"date": "2020-07-18",
 	"build": "114618",
-    "version": "0.0.3"
+	"version": "0.0.4",
+	"dependencies": ["com.flubbateios.stats"]
 }
