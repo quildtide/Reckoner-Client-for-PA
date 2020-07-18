@@ -11,8 +11,6 @@ function display_reckoner() {
 
     loaded_reckoner = true;
 
-    var ratings = {};
-
     model.reckoner_ratings = ko.observable( {} );
 
     function please_work(ready) {
@@ -22,15 +20,11 @@ function display_reckoner() {
         model.reckoner_ratings.valueHasMutated();
     }
 
-    // function pid_controller(ready) {
-    //     if (isNaN(this.pid)) {
-    //         api.net.ubernet('/GameClient/UserId?' + $.param({ TitleDisplayName: this.pid }), 'GET', 'text')
-    //             .then(_.bind(please_work, {pid: this.pid}));
-    //     } else {
-    //         _.bind(please_work, {pid: this.pid});
-    //     }
-    // }
-
+    function i_hate_js(res) {
+        $.get(BASIC_RATING + JSON.parse(res).UberId).then(
+            _.bind(please_work, {pid: this.pid})
+        )
+    }
     function refresh_ratings() {
         var i;
         var j;
@@ -40,14 +34,13 @@ function display_reckoner() {
                 if (slot.isPlayer() && !(slot.ai())) {
                     var pid = slot.playerId()
                     if (isNaN(pid)) {
-                        api.net.ubernet('/GameClient/UserId?' + $.param({TitleDisplayName: pid }), 'GET', 'text')
-                            .then(function (res) {
-                                $.get(BASIC_RATING + JSON.parse(res).UberId)
-                                    .then(_.bind(please_work, {pid: pid}))
-                            });
+                        api.net.ubernet('/GameClient/UserId?' + $.param({TitleDisplayName: pid }), 'GET', 'text').then(
+                            _.bind(i_hate_js, {pid: pid})
+                        );
                     } else {
                         $.get(BASIC_RATING + pid).then(
-                            _.bind(please_work, {pid: pid}));
+                            _.bind(please_work, {pid: pid})
+                        );
                     }
 
                     
