@@ -22,8 +22,8 @@
         ]
 	},
 	"context": "client",
-	"date": "2020-07-18",
+	"date": "2020-07-198",
 	"build": "114618",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"dependencies": ["com.flubbateios.stats"]
 }
