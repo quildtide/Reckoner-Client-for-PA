@@ -13,6 +13,12 @@ function display_reckoner() {
 
     model.reckoner_ratings = ko.observable( {} );
 
+    var change_occured = true;
+
+    function flag_change() {
+        change_occured = true;
+    }
+
     function please_work(ready) {
         model.reckoner_ratings()[this.pid] = {rating: ready}
         console.log(this.pid)
@@ -26,6 +32,9 @@ function display_reckoner() {
         )
     }
     function refresh_ratings() {
+        if (!change_occured) {
+            return;
+        }
         var i;
         var j;
         for (i = 0; i < model.armies().length; i++) {
@@ -54,13 +63,19 @@ function display_reckoner() {
         (<span data-bind="text: rating"></span>)\
         <!-- /ko -->');
 
-    function delayed_refresh_ratings() {
-        setTimeout(refresh_ratings, 500);
-    }
+    // function delayed_refresh_ratings() {
+    //     setTimeout(refresh_ratings, 500);
+    // }
 
-    model.isFFAGame.subscribe(refresh_ratings);
-    model.numberOfEmptySlots.subscribe(delayed_refresh_ratings);
-    model.playerCount.subscribe(refresh_ratings);
+    // model.isFFAGame.subscribe(refresh_ratings);
+    // model.numberOfEmptySlots.subscribe(delayed_refresh_ratings);
+    // model.playerCount.subscribe(refresh_ratings);
+
+    model.isFFAGame.subscribe(flag_change);
+    model.numberOfEmptySlots.subscribe(flag_change);
+    model.playerCount.subscribe(flag_change);
+
+    setInterval(refresh_ratings, 2000)
 }
 
 display_reckoner()
