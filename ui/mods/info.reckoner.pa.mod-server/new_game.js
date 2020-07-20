@@ -56,6 +56,7 @@ function display_reckoner() {
                 }
             }
         }
+        change_occured = false
     }
 
     $('div.slot-player-text.truncate').after(
