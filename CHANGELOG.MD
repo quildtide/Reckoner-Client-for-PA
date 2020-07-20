@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.6
+Actually implemented the changes described in 0.0.5
+
 ## 0.0.5
 Reckoner client now sends requests to server at maximum frequency of once every 2.5 seconds.
 
