@@ -22,7 +22,7 @@
         ]
 	},
 	"context": "server",
-	"date": "2020-07-19",
+	"date": "2020-08-20",
 	"build": "114618",
-    "version": "0.0.6"
+    "version": "0.1.0"
 }
