@@ -70,10 +70,15 @@ function display_reckoner() {
         var game_context = {
             team_sizes: [], shared: [], 
             player_types: [], player_ids: [], 
-            ecos: [], titans: true, 
+            ecos: [], titans: false, 
             unique_ids: []};
 
-        game_context.titans = (model.requiredContent()[0] == "PAExpansion1")
+        try {
+            game_context.titans = (model.requiredContent()[0] == "PAExpansion1");
+        }
+        catch(err) {
+            game_context.titans = false;
+        }
 
         var i;
         var j;
@@ -151,12 +156,12 @@ function display_reckoner() {
             if (known < c) {
                 setTimeout(send_reckoner, 200)
             } else {
-                $.get(RATING_URL, "context=" + encodeURIComponent(JSON.stringify(game_context))).then(please_work)
-
-                // .catch( 
-                //     function () {
-                //         instance_count -= 1;
-                //     })
+                try {
+                    $.get(RATING_URL, "context=" + encodeURIComponent(JSON.stringify(game_context))).then(please_work)
+                }
+                catch(err) {
+                    instance_count -= 1;
+                }
             }
         }
 
@@ -170,8 +175,8 @@ function display_reckoner() {
 
     $('span.army-id').after(
         '<!-- ko with: model.reckoner_ratings()["team_stats"][$index()] -->\
-        (<span data-bind="text: team_rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: team_rating_std.toFixed(0)"></span>), \
-        <span data-bind="text: win_chance.toFixed(2)"></span>\
+        &#8212 EFFECTIVE RATING: (<span data-bind="text: team_rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: team_rating_std.toFixed(0)"></span>) \
+        &#8212 <span data-bind="text: win_chance.toFixed(2)"></span>% CHANCE OF WINNING\
         <!-- /ko -->');  
 
     // function delayed_refresh_ratings() {
