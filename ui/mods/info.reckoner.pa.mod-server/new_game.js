@@ -31,8 +31,9 @@ function display_reckoner() {
     }
 
     var change_occured = true;
+    var instance_count = 0;
 
-    var game_context = {team_sizes: [], shared: [], player_types: [], player_ids: [], ecos: [], titans: true, unique_ids: []};
+    
 
     function flag_change() {
         change_occured = true;
@@ -40,9 +41,9 @@ function display_reckoner() {
 
     function please_work(result) {
         model.reckoner_ratings(JSON.parse(result))
-
-        console.log(model.reckoner_ratings())
-
+        change_occured = false
+        instance_count -= 1
+        // console.log(model.reckoner_ratings())
         // model.reckoner_ratings.valueHasMutated();
     }
 
@@ -60,13 +61,19 @@ function display_reckoner() {
         if (!change_occured) {
             return;
         }
-        game_context.titans = (model.requiredContent()[0] == "PAExpansion1");
-        game_context.team_sizes = [];
-        game_context.shared = [];
-        game_context.player_types = [];
-        game_context.player_ids = [];
-        game_context.ecos = [];
-        game_context.unique_ids = [];
+        if (instance_count > 1) {
+            // triggers if 2 instances already running
+            return;
+        }
+        instance_count += 1;
+
+        var game_context = {
+            team_sizes: [], shared: [], 
+            player_types: [], player_ids: [], 
+            ecos: [], titans: true, 
+            unique_ids: []};
+
+        game_context.titans = (model.requiredContent()[0] == "PAExpansion1")
 
         var i;
         var j;
@@ -138,14 +145,18 @@ function display_reckoner() {
                 c = c + 1
             }
         }
-        change_occured = false
+        
 
         function send_reckoner() {
             if (known < c) {
                 setTimeout(send_reckoner, 200)
             } else {
                 $.get(RATING_URL, "context=" + encodeURIComponent(JSON.stringify(game_context))).then(please_work)
-                console.log(encodeURIComponent(JSON.stringify(game_context)))
+
+                // .catch( 
+                //     function () {
+                //         instance_count -= 1;
+                //     })
             }
         }
 
@@ -156,6 +167,12 @@ function display_reckoner() {
         '<!-- ko with: model.reckoner_ratings()["player_stats"][model.reckoner_id(slot)] -->\
         (<span data-bind="text: rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: rating_std.toFixed(0)"></span>)\
         <!-- /ko -->');
+
+    $('div.army-header').after(
+        '<!-- ko with: model.reckoner_ratings()["team_stats"][$index()] -->\
+        (<span data-bind="text: team_rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: team_rating_std.toFixed(0)"></span>), \
+        <span data-bind="text: win_chance.toFixed(2)"></span>\
+        <!-- /ko -->');  
 
     // function delayed_refresh_ratings() {
     //     setTimeout(refresh_ratings, 500);
@@ -169,7 +186,7 @@ function display_reckoner() {
     model.numberOfEmptySlots.subscribe(flag_change);
     model.playerCount.subscribe(flag_change);
 
-    setInterval(refresh_ratings, 2000)
+    setInterval(refresh_ratings, 1000)
 }
 
 display_reckoner()
