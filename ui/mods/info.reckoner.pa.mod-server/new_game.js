@@ -168,7 +168,7 @@ function display_reckoner() {
         (<span data-bind="text: rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: rating_std.toFixed(0)"></span>)\
         <!-- /ko -->');
 
-    $('div.army-header').after(
+    $('span.army-id').after(
         '<!-- ko with: model.reckoner_ratings()["team_stats"][$index()] -->\
         (<span data-bind="text: team_rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: team_rating_std.toFixed(0)"></span>), \
         <span data-bind="text: win_chance.toFixed(2)"></span>\
