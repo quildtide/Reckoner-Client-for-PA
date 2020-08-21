@@ -21,9 +21,9 @@
             "coui://ui/mods/info.reckoner.pa.mod-server/new_game.js"
         ]
 	},
-	"dependencies": ["com.flubbateios.stats"],
 	"context": "client",
-	"date": "2020-07-19",
+	"date": "2020-08-20",
 	"build": "114618",
-    "version": "0.0.6"
+	"version": "0.1.0",
+	"dependencies": ["com.flubbateios.stats"]
 }
