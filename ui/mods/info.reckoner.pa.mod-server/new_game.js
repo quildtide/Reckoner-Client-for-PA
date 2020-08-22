@@ -176,7 +176,7 @@ function display_reckoner() {
     $('span.army-id').after(
         '<!-- ko with: model.reckoner_ratings()["team_stats"][$index()] -->\
         &#8212 EFFECTIVE RATING: (<span data-bind="text: team_rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: team_rating_std.toFixed(0)"></span>) \
-        &#8212 <span data-bind="text: win_chance.toFixed(2)"></span>% CHANCE OF WINNING\
+        &#8212 <span data-bind="text: 100 * win_chance.toFixed(2)"></span>% CHANCE OF WINNING\
         <!-- /ko -->');  
 
     // function delayed_refresh_ratings() {
