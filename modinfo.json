@@ -1,5 +1,5 @@
 {
-	"identifier": "info.reckoner.pa.mod-client",
+	"identifier": "info.reckoner.pa.mod-client-test",
 	"display_name": "Reckoner for PA (Client)",
 	"description": "Team Game Rating System for PA displayed for all players in a lobby. Very WIP. Client version. Uses SuperStats as a dependency.",
 	"author": "Dissonant",
