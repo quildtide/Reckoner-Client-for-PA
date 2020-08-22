@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.1
+Multiplied displayed win chances by 100 so win_chances sum to 100% instead of 1.
+
+## 0.1.0
+Implemented the following features:
+- AI ratings
+- Total team strength
+- Team win chance
+
 ## 0.0.6
 Actually implemented the changes described in 0.0.5
 
