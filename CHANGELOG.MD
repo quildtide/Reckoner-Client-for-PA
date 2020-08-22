@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.1.2
+Fixed bug that occured when a player had a fully numeric name on a custom server (thanks O84!)
+
 ## 0.1.1
 Multiplied displayed win chances by 100 so win_chances sum to 100% instead of 1.
 
