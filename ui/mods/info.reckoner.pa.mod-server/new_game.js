@@ -22,7 +22,7 @@ function display_reckoner() {
             return slot.playerName()
         } else {
             var pid = slot.playerId()
-            if (isNaN(pid)) {
+            if (pid === slot.playerName()) {
                 return model.reckoner_uberid_matcher[pid]
             } else {
                 return pid
@@ -99,7 +99,7 @@ function display_reckoner() {
                 } else if (!slot.ai()) {
                     var pid = slot.playerId()
                     game_context.player_types[c] = "pa inc";
-                    if (isNaN(pid)) {
+                    if (pid === slot.playerName()) {
                         if (model.reckoner_uberid_matcher[pid]) {
                             // we've cached the result already in this case
                             game_context.player_ids[c] = model.reckoner_uberid_matcher[pid]
