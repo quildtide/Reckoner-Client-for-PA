@@ -155,7 +155,7 @@ function display_reckoner() {
                 setTimeout(send_reckoner, 200)
             } else {
                 try {
-                    $.get(RATING_URL, "context=" + encodeURIComponent(JSON.stringify(game_context))).then(please_work)
+                    $.get(RATING_URL, "context=" + encodeURIComponent(JSON.stringify(game_context))).then(please_work);
                 }
                 catch(err) {
                     instance_count -= 1;
@@ -177,9 +177,20 @@ function display_reckoner() {
         &#8212 <span data-bind="text: (100 * win_chance).toFixed(2)"></span>% CHANCE OF WINNING\
         <!-- /ko -->');  
 
-    model.isFFAGame.subscribe(flag_change);
-    model.numberOfEmptySlots.subscribe(flag_change);
-    model.playerCount.subscribe(flag_change);
+    model.armies.subscribe(flag_change);
+    model.armies.subscribe(function() {
+        for (var i = 0; i < model.armies().length; i++) {
+            army = model.armies()[i];
+            army.numberOfSlots.subscribe(flag_change);
+            army.numberOfEmptySlots.subscribe(flag_change);
+            army.sharedArmy.subscribe(flag_change);
+            for (var j = 0; j < army.slots().length; j++) {
+                slot = army.slots()[j];
+                slot.serverEconFactor.subscribe(flag_change);
+                slot.aiPersonality.subscribe(flag_change);
+            }
+        }
+    })
 
     setInterval(refresh_ratings, 1000)
 }
