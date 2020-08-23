@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.1.4
+Reckoner should now be more responsive to lobby state changes.
+
 ## 0.1.3
 Fixed the following bugs:
 - Intervals are no longer halved
