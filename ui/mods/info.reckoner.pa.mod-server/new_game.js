@@ -177,14 +177,6 @@ function display_reckoner() {
         &#8212 <span data-bind="text: (100 * win_chance).toFixed(2)"></span>% CHANCE OF WINNING\
         <!-- /ko -->');  
 
-    // function delayed_refresh_ratings() {
-    //     setTimeout(refresh_ratings, 500);
-    // }
-
-    // model.isFFAGame.subscribe(refresh_ratings);
-    // model.numberOfEmptySlots.subscribe(delayed_refresh_ratings);
-    // model.playerCount.subscribe(refresh_ratings);
-
     model.isFFAGame.subscribe(flag_change);
     model.numberOfEmptySlots.subscribe(flag_change);
     model.playerCount.subscribe(flag_change);
