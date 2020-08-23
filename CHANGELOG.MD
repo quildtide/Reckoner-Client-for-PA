@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.3
+Fixed the following bugs:
+- Intervals are no longer halved
+- Correctly shows 2 digits after decimal now
+- Ratings are now assigned to the correct player in a custom server
+
 ## 0.1.2
 Fixed bug that occured when a player had a fully numeric name on a custom server (thanks O84!)
 
