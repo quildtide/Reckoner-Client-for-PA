@@ -80,16 +80,14 @@ function display_reckoner() {
             game_context.titans = false;
         }
 
-        var i;
-        var j;
         var c = 0;
         var known = 0;
-        for (i = 0; i < model.armies().length; i++) {
+        for (var i = 0; i < model.armies().length; i++) {
             var shared = model.armies()[i].sharedArmy();
             var team_size = model.armies()[i].slots().length
             game_context.shared[i] = shared;
             game_context.team_sizes[i] = team_size
-            for (j = 0; j < team_size; j++) {
+            for (var j = 0; j < team_size; j++) {
                 var slot = model.armies()[i].slots()[j];
                 game_context.shared[c] = shared;
                 if (!slot.isPlayer()) {
@@ -157,7 +155,7 @@ function display_reckoner() {
                 setTimeout(send_reckoner, 200)
             } else {
                 try {
-                    $.get(RATING_URL, "context=" + encodeURIComponent(JSON.stringify(game_context))).then(please_work)
+                    $.get(RATING_URL, "context=" + encodeURIComponent(JSON.stringify(game_context))).then(please_work);
                 }
                 catch(err) {
                     instance_count -= 1;
@@ -179,17 +177,20 @@ function display_reckoner() {
         &#8212 <span data-bind="text: (100 * win_chance).toFixed(2)"></span>% CHANCE OF WINNING\
         <!-- /ko -->');  
 
-    // function delayed_refresh_ratings() {
-    //     setTimeout(refresh_ratings, 500);
-    // }
-
-    // model.isFFAGame.subscribe(refresh_ratings);
-    // model.numberOfEmptySlots.subscribe(delayed_refresh_ratings);
-    // model.playerCount.subscribe(refresh_ratings);
-
-    model.isFFAGame.subscribe(flag_change);
-    model.numberOfEmptySlots.subscribe(flag_change);
-    model.playerCount.subscribe(flag_change);
+    model.armies.subscribe(flag_change);
+    model.armies.subscribe(function() {
+        for (var i = 0; i < model.armies().length; i++) {
+            army = model.armies()[i];
+            army.numberOfSlots.subscribe(flag_change);
+            army.numberOfEmptySlots.subscribe(flag_change);
+            army.sharedArmy.subscribe(flag_change);
+            for (var j = 0; j < army.slots().length; j++) {
+                slot = army.slots()[j];
+                slot.serverEconFactor.subscribe(flag_change);
+                slot.aiPersonality.subscribe(flag_change);
+            }
+        }
+    })
 
     setInterval(refresh_ratings, 1000)
 }
