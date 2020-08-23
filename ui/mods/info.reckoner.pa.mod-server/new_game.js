@@ -80,16 +80,14 @@ function display_reckoner() {
             game_context.titans = false;
         }
 
-        var i;
-        var j;
         var c = 0;
         var known = 0;
-        for (i = 0; i < model.armies().length; i++) {
+        for (var i = 0; i < model.armies().length; i++) {
             var shared = model.armies()[i].sharedArmy();
             var team_size = model.armies()[i].slots().length
             game_context.shared[i] = shared;
             game_context.team_sizes[i] = team_size
-            for (j = 0; j < team_size; j++) {
+            for (var j = 0; j < team_size; j++) {
                 var slot = model.armies()[i].slots()[j];
                 game_context.shared[c] = shared;
                 if (!slot.isPlayer()) {
