@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## 0.1.4
+Default rating has been shifted from 1500 to 0.
+
+## 0.1.4
 Reckoner should now be more responsive to lobby state changes.
 
 ## 0.1.3

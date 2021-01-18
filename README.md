@@ -1,6 +1,6 @@
 # Reckoner Client for Planetary Annihilation
 
-**Version 0.1.4**
+**Version 0.1.5**
 
 This is a rating system for Planetary Annihilation aimed towards team games; very WIP.
 
