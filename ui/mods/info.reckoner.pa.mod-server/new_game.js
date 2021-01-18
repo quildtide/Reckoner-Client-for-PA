@@ -168,12 +168,12 @@ function display_reckoner() {
 
     $('div.slot-player-text.truncate').after(
         '<!-- ko with: model.reckoner_ratings()["player_stats"][model.reckoner_id(slot)] -->\
-        (<span data-bind="text: rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: (2 * rating_std).toFixed(0)"></span>)\
+        (<span data-bind="text: rating_mean.toFixed(0) - 1500"></span> &#xB1 <span data-bind="text: (2 * rating_std).toFixed(0)"></span>)\
         <!-- /ko -->');
 
     $('span.army-id').after(
         '<!-- ko with: model.reckoner_ratings()["team_stats"][$index()] -->\
-        &#8212 EFFECTIVE RATING: (<span data-bind="text: team_rating_mean.toFixed(0)"></span> &#xB1 <span data-bind="text: (2 * team_rating_std).toFixed(0)"></span>) \
+        &#8212 EFFECTIVE RATING: (<span data-bind="text: team_rating_mean.toFixed(0) - 1500"></span> &#xB1 <span data-bind="text: (2 * team_rating_std).toFixed(0)"></span>) \
         &#8212 <span data-bind="text: (100 * win_chance).toFixed(2)"></span>% CHANCE OF WINNING\
         <!-- /ko -->');  
 
