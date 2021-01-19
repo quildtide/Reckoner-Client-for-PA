@@ -11,7 +11,8 @@ function display_reckoner() {
 
     const RATING_URL = RECKONER_URL + "api/full_rating";
 
-    model.reckoner_ratings = ko.observable( {player_stats: {}, team_stats: {}} );
+    model.reckoner_ratings = ko.observable( {player_stats: {}, team_stats: {} } );
+    model.reckoner_loading = ko.observable(false);
 
     model.reckoner_uberid_matcher = {};
 
@@ -33,16 +34,22 @@ function display_reckoner() {
     var change_occured = true;
     var instance_count = 0;
 
-    
+    function check_loading() {
+        if (instance_count == 0) {
+            model.reckoner_loading(false);
+        }
+        return;
+    }
 
     function flag_change() {
         change_occured = true;
+        model.reckoner_loading(true);
     }
 
     function please_work(result) {
         model.reckoner_ratings(JSON.parse(result))
-        change_occured = false
         instance_count -= 1
+        check_loading();
         // console.log(model.reckoner_ratings())
         // model.reckoner_ratings.valueHasMutated();
     }
@@ -63,8 +70,11 @@ function display_reckoner() {
         }
         if (instance_count > 1) {
             // triggers if 2 instances already running
+            model.reckoner_ratings
             return;
         }
+        change_occured = false
+
         instance_count += 1;
 
         var game_context = {
@@ -159,6 +169,7 @@ function display_reckoner() {
                 }
                 catch(err) {
                     instance_count -= 1;
+                    check_loading();
                 }
             }
         }
@@ -169,13 +180,20 @@ function display_reckoner() {
     $('div.slot-player-text.truncate').after(
         '<!-- ko with: model.reckoner_ratings()["player_stats"][model.reckoner_id(slot)] -->\
         (<span data-bind="text: rating_mean.toFixed(0) - 1500"></span> &#xB1 <span data-bind="text: (2 * rating_std).toFixed(0)"></span>)\
+        <!-- /ko -->\
+        <!-- ko if: model.reckoner_loading() -->\
+        <img class="working small" src="coui://ui/main/shared/img/working.svg" data-bind="tooltip: "Fetching Ratings"" />\
         <!-- /ko -->');
-
+        
     $('span.army-id').after(
         '<!-- ko with: model.reckoner_ratings()["team_stats"][$index()] -->\
         &#8212 EFFECTIVE RATING: (<span data-bind="text: team_rating_mean.toFixed(0) - 1500"></span> &#xB1 <span data-bind="text: (2 * team_rating_std).toFixed(0)"></span>) \
         &#8212 <span data-bind="text: (100 * win_chance).toFixed(2)"></span>% CHANCE OF WINNING\
+        <!-- /ko -->\
+        <!-- ko if: model.reckoner_loading() -->\
+        <img class="working small" src="coui://ui/main/shared/img/working.svg" data-bind="tooltip: "Fetching Ratings"" />\
         <!-- /ko -->');  
+
 
     model.armies.subscribe(flag_change);
     model.armies.subscribe(function() {
