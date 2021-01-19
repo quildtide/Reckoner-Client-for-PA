@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## 0.1.4
+## 0.1.6
+Reckoner now shows loading symbols next to ratings when they are not yet fully updated.
+Fixed a bug causing Reckoner to do about double the necessary work in order to update.
+
+## 0.1.5
 Default rating has been shifted from 1500 to 0.
 
 ## 0.1.4
