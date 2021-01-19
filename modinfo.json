@@ -21,7 +21,7 @@
             "coui://ui/mods/info.reckoner.pa.mod-server/new_game.js"
         ]
 	},
-	"context": "client",
+	"context": "server",
 	"date": "2021-01-18",
 	"build": "115459",
     "version": "0.1.6"
