@@ -1,5 +1,5 @@
 {
-	"identifier": "info.reckoner.pa.mod-server-test",
+	"identifier": "info.reckoner.pa.mod-server",
 	"display_name": "Reckoner for PA (Server)",
 	"description": "Team Game Rating System for PA. Very WIP. Server version.",
 	"author": "Dissonant",
@@ -22,7 +22,7 @@
         ]
 	},
 	"context": "server",
-	"date": "2021-01-18",
+	"date": "2021-01-19",
 	"build": "115459",
-    "version": "0.1.7"
+    "version": "0.1.8"
 }
