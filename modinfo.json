@@ -23,7 +23,7 @@
 	},
 	"dependencies": ["com.flubbateios.stats"],
 	"context": "client",
-	"date": "2021-01-18",
+	"date": "2021-02-22",
 	"build": "115459",
-    "version": "0.1.6"
+    "version": "0.1.8"
 }
