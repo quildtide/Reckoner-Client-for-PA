@@ -1,6 +1,9 @@
 # CHANGELOG
 
-## 0.1.6
+## 0.1.8 Client / 0.1.9 Server
+Loading symbols next to players have been replaced with text to avoid confusion.
+
+## 0.1.6 Client / 0.1.8 Server
 Reckoner now shows loading symbols next to ratings when they are not yet fully updated.
 Fixed a bug causing Reckoner to do about double the necessary work in order to update.
 
