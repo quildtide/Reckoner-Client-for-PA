@@ -182,7 +182,7 @@ function display_reckoner() {
         (<span data-bind="text: rating_mean.toFixed(0) - 1500"></span> &#xB1 <span data-bind="text: (2 * rating_std).toFixed(0)"></span>)\
         <!-- /ko -->\
         <!-- ko if: model.reckoner_loading() -->\
-        <img class="working small" src="coui://ui/main/shared/img/working.svg" data-bind="tooltip: "Fetching Ratings"" />\
+        (REFRESHING RATING)\
         <!-- /ko -->');
         
     $('span.army-id').after(
