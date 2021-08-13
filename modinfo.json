@@ -22,7 +22,7 @@
         ]
 	},
 	"context": "client",
-	"date": "2021-06-14",
+	"date": "2021-08-12",
 	"build": "115459",
-    "version": "0.2.0"
+    "version": "0.2.1"
 }
