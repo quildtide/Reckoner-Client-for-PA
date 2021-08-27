@@ -7,22 +7,25 @@
 	"forum": "https://forums.planetaryannihilation.com/threads/client-server-reckoner-ratings.73489/",
 	"priority": 100,
 	"icon": "https://i.imgur.com/gv7fM54.png",
-    "titansOnly": false,
-    "classicOnly": false,
+	"titansOnly": false,
+	"classicOnly": false,
 	"category": [
-        "classic",
-        "titans",
-        "lobby",
-        "ui",
-        "rating"
+		"classic",
+		"titans",
+		"lobby",
+		"ui",
+		"rating"
 	],
 	"scenes": {
 		"new_game": [
-            "coui://ui/mods/info.reckoner.pa.mod-server/new_game.js"
-        ]
+			"coui://ui/mods/info.reckoner.pa.mod-server/new_game.js"
+		],
+		"live_game": [
+			"coui://ui/mods/info.reckoner.pa.mod-server/live_game.js"
+		]
 	},
 	"context": "server",
-	"date": "2021-06-19",
-	"build": "115459",
-    "version": "0.2.1"
+	"date": "2021-08-27",
+	"build": "115958",
+	"version": "0.2.2"
 }
