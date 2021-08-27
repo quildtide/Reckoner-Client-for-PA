@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.2.2 (2021-08-27)
+- Now includes ReckonerPA Reporter, which reports team composition, sandbox presence, and dynamic alliance presence.
+
+## 0.2.1 (2021-08-12)
+- Removed the SuperStats dependency from the client since SuperStats is now down.
+
+## 0.2.0 (2021-06-14)
+Large overhaul
+- Individual ratings will be returned much faster now
+- Individual ratings are no longer constantly requeried
+- Ratings now use one of four ratings for the closest mode (1v1, FFA, 2-team, multi-teams)
+- Effective team rating temporarily removed
+- Estimated team win chance temporarily removed
+
 ## 0.1.8 Client / 0.1.9 Server
 Loading symbols next to players have been replaced with text to avoid confusion.
 
