@@ -19,7 +19,10 @@
 	"scenes": {
 		"new_game": [
             "coui://ui/mods/info.reckoner.pa.mod-server/new_game.js"
-        ]
+        ],
+		"live_game": [
+			"coui://ui/mods/info.reckoner.pa.mod-server/live_game.js"
+		]
 	},
 	"context": "client",
 	"date": "2021-08-12",
